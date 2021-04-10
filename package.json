@@ -1,0 +1,28 @@
+{
+  "name": "sweetcherry-node",
+  "version": "1.0.0",
+  "description": "Sprint 1 - Repository Contains Angular App + NodeJS Backend API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muthayashm/sprint1-node-app.git"
+  },
+  "author": "Yash Mutha, Vijaya Durga Prasad Pitani, Ambika Pandey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muthayashm/sprint1-node-app/issues"
+  },
+  "homepage": "https://github.com/muthayashm/sprint1-node-app#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.3",
+    "nodemon": "^2.0.7"
+  }
+}
