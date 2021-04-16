@@ -1,16 +1,26 @@
 //Importing the libraries
 const express = require('express')
-const router = express.Router();
+const userRouter = express.Router();
+const productRouter = express.Router();
+
 const userController = require('./controllers/user.controller');
+const productController = require('./controllers/product.controller')
+
 const {
     auth
 } = require('./auth')
 
-router.post('/', userController.createUser) //localhost:3128/user
+userRouter.post('/', userController.createUser) //localhost:3128/user
+
+productRouter.post('/', productController.createProduct)
+productRouter.post('/bulk', productController.createBulkProducts)
+productRouter.get('/', productController.getProducts)
 
 //Route configuration
 const routes = (app) => {
-    app.use('/user', router);
+    app.use('/user', userRouter);
+
+    app.use('/product', productRouter);
 
     app.post('/login', userController.loginUser)
 

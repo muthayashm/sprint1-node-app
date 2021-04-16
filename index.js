@@ -28,7 +28,8 @@ routes(app)
 
 //Connecting MongoDB
 mongoose.connect(DB_URL, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 
 app.listen(PORT, () => {

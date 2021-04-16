@@ -4,6 +4,8 @@ const {
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv')
 dotenv.config()
+//For encryption & decyption
+const CryptoJS = require("crypto-js");
 
 const createUser = async (req, res) => {
     console.log('Create Emp');
@@ -17,14 +19,27 @@ const createUser = async (req, res) => {
     let message;
 
     try {
-        const user = new User({
-            email: email,
-            password: password
+        let user = await User.findOne({
+            email: email
         })
-        await user.save()
-        statusCode = 200
-        message = {
-            message: 'User created successfully'
+
+        if (user) { //User is already present
+            statusCode = 409
+            message = {
+                message: 'User already exists, try login instead'
+            }
+        } else { //create user
+            //cipher = cipher.toString();
+            user = new User({
+                email: email,
+                password: CryptoJS.AES.encrypt(password, process.env.SECRET_KEY)
+            })
+            await user.save()
+
+            statusCode = 201
+            message = {
+                message: 'User created successfully'
+            }
         }
     } catch (err) {
         console.log('Some error occured', err)
@@ -57,7 +72,8 @@ const loginUser = async (req, res) => {
         })
 
         if (user) {
-            if (user.email === email && user.password === password) {
+            //decipher = decipher.toString(CryptoJS.enc.Utf8);
+            if (user.email === email && CryptoJS.AES.decrypt(user.password, KEY).toString(CryptoJS.enc.Utf8) === password) {
                 token = jwt.sign({
                     username: email
                 }, KEY)
