@@ -35,6 +35,10 @@ const Product = new Schema({
     discount: {
         type: Number,
         required: false
+    },
+    isNewProduct: {
+        type: Boolean,
+        required: false
     }
 }, {
     timestamps: true
