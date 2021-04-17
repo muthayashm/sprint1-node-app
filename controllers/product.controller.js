@@ -141,7 +141,8 @@ const getProducts = async (req, res) => {
                 imageLink: product.imageLink,
                 price: product.price,
                 category: product.category,
-                discount: product.discount
+                discount: product.discount,
+                isNewProduct: product.isNewProduct
             }))
         }
     }
