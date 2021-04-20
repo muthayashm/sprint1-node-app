@@ -8,43 +8,53 @@ const User = new Schema({
         required: true,
         unique: true,
         trim: true,
-    uniqueCaseInsensitive: false
+        uniqueCaseInsensitive: false,
+        default: ''
     },
     password: {
         type: String,
-        required: true
+        required: true,
+        default: ''
     },
     fullName: {
         type: String,
-        required: false
+        required: false,
+        default: ''
     },
     mobileNumber: {
         type: Number,
-        required: false
+        required: false,
+        default: 0.0
     },
     address: {
         type: String,
-        required: false
+        required: false,
+        default: ''
     },
     city: {
         type: String,
-        required: false
+        required: false,
+        default: ''
     },
     state: {
         type: String,
-        required: false
+        required: false,
+        default: ''
     },
     country: {
         type: String,
-        required: false
+        required: false,
+        default: ''
     },
     zipCode: {
         type: Number,
-        required: false
+        required: false,
+        default: 0.0
     },
     lastLoginOn: {
         type: Date,
-        required: false
+        required: false,
+        default: () => Date.now() + 7 * 24 * 60 * 60 * 1000
     }
 }, {
     timestamps: true
