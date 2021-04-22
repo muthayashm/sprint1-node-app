@@ -11,7 +11,7 @@ const {
 } = require('./auth')
 
 userRouter.post('/', userController.createUser) //localhost:3128/user
-
+userRouter.get('/:email', userController.getUser)
 productRouter.post('/', productController.createProduct)
 productRouter.post('/bulk', productController.createBulkProducts)
 productRouter.get('/', productController.getProducts)
